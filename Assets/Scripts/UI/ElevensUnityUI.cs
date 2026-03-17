@@ -2,8 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Elevens.Core;
-using System.Runtime.ExceptionServices;
-using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -55,7 +53,7 @@ public class ElevensUnityUI : MonoBehaviour
         bool ok = game.SubmitSelection(ordered, out string message);
         stateText.text = message;
 
-        slectedIndices.Clear();
+        selectedIndices.Clear();
         RefreshAllUI();
 
         if (game.State == GameState.Won)
@@ -73,7 +71,7 @@ public class ElevensUnityUI : MonoBehaviour
         Debug.Log("Quit Game");
 
         #if UNITY_EDITOR
-        UnityEngine.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
         #else
         Application.Quit();
         #endif
@@ -133,6 +131,6 @@ public class ElevensUnityUI : MonoBehaviour
             return;
         }
         stateText.text = $"State: {game.State}";
-        deckText.text = $"Deck: {game.Deck.Count()}";
+        deckText.text = $"Deck: {game.Deck.Count}";
     }
 }
